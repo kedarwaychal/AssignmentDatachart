@@ -1,0 +1,60 @@
+<div class="flex justify-content-between">
+    <app-navbar></app-navbar>
+<p-button (click)="showDialog()" label="Add Product"/>
+</div>
+
+<div class="container">
+    <div class="table-container">
+        <p-table [value]="products" [paginator]="true" [rows]="5">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Image</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{ product.id}}</td>
+                    <td>{{ product.title}}</td>
+                    <td>{{ product.price}}</td>
+                    <td>{{ product.category}}</td>
+                    <td><img src="{{ product.image}}" height="20px" width="20px"><img></td>
+                    <td>
+                        <button
+                        pButton
+                        icon="pi pi-pencil"
+                        class="p-button-rounded p-button-success mr-2"
+                        (click)="editProduct(product)"
+                        >
+        
+                    </button>
+                </td>
+                <td>
+                    <button pButton
+                    icon="pi pi-trash"
+                    class="p-button-rounded p-button-danger mr-2"
+                    (click)="deleteProduct(product)"
+                    >
+        
+                    </button>
+                </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <app-add-edit-product [displayAddModal]="displayAddModal" (clickClose)="hideAddModal($event)" (clickAdd)="saveProductToList($event)" [selectedProduct]="selectedProduct" [product]="products"></app-add-edit-product>
+        
+        <p-toast position="bottom-right"></p-toast>
+    </div>
+    <div class="chart-container">
+        <app-bar-chart [products]="products"></app-bar-chart>
+    </div>
+  </div>
+  
+
+
+

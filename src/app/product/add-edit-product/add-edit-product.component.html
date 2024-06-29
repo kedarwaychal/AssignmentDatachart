@@ -1,0 +1,38 @@
+<p-dialog header="{{modalType === 'Edit' ? 'Edit Product' : 'Add Product'}}" [modal]="true" [(visible)]="displayAddModal" [style]="{ width: '25rem' }" (onHide)="closemodal()">
+    <span class="p-text-secondary block mb-5">Update your information.</span>
+    <form [formGroup]="productForm" >
+        <div class="field">
+            <label for="title" class="block">Title</label>
+            <input pInputText id="title" class="flex-auto" formControlName="title"/>
+            <ng-container *ngIf="productForm.controls['title'].touched">
+                <small class="p-error block" *ngIf="productForm.controls['title'].invalid && productForm.controls['title'].dirty">Title is required</small>
+            </ng-container>
+        </div>
+        <div class="field">
+            <label for="price" class="block">Price</label>
+            <input pInputText id="price" class="flex-auto" formControlName="price"/>
+            <small class="p-error block" *ngIf="productForm.controls['price'].invalid && productForm.controls['price'].dirty">Price is required</small>
+        </div>
+        <div class="field">
+            <label for="description" class="block">Description</label>
+            <textarea pInputTextarea formControlName="description"></textarea>
+            <small class="p-error block" *ngIf="productForm.controls['description'].invalid && productForm.controls['description'].dirty">Description is required</small>
+        </div>
+        <div class="field">
+            <label for="image" class="block">Image</label>
+            <input pInputText id="image" formControlName="image"/>
+        </div>
+        <div class="field">
+            <label for="category" class="block">Category</label>
+            <input pInputText id="category" formControlName="category"/>
+        </div>
+    </form>
+    <ng-template pTemplate="footer">
+        <p-button
+            (click)="closemodal()"
+            label="Cancel"
+            styleClass="p-button-text"
+        ></p-button>
+        <p-button (click)="addProduct()" label="{{modalType === 'Edit' ? 'Edit' : 'Add'}}"></p-button>
+    </ng-template>
+</p-dialog>

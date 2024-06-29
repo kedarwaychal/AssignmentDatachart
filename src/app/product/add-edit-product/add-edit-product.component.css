@@ -1,0 +1,28 @@
+.block {
+    font-size: 16px; /* Adjust font size */
+    margin-bottom: 5px; /* Space between label and textarea */
+  }
+  
+  textarea {
+    width: 100%; /* Full width */
+    height: 70px; /* Adjust height */
+    padding: 10px; /* Padding inside textarea */
+    font-size: 14px; /* Font size */
+    resize: vertical; /* Allow vertical resizing */
+    box-sizing: border-box; /* Include padding in width/height */
+  }
+  input{
+    width: 100%;
+  }
+
+input.ng-invalid.ng-dirty,
+  textarea.ng-invalid.ng-dirty {
+    border-color: red;
+  }
+
+    .p-error {
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+  
